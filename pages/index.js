@@ -30,7 +30,7 @@ function Home() {
 
   return (
     <div>
-      <h1>Deploy automatizado !!!! Uhuuuu - 3</h1>
+      <h1>Deploy automatizado !!!! Uhuuuu - 5 versão. Essa foi pelo app smartphone.</h1>
       <div id="dataHoraDisplay">{horaAtual}</div>
     </div>
   );
