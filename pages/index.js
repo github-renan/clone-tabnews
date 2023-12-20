@@ -8,7 +8,7 @@ function obterDataHoraAtual() {
     var data = new Date();
     var horas = data.getHours();
     var minutos = data.getMinutes();
-    
+
     var segundos = data.getSeconds();
   
     horas = horas < 10 ? '0' + horas : horas;
@@ -31,5 +31,5 @@ function obterDataHoraAtual() {
       }
     };
   }  
-
+obterDataHoraAtual();
 export default Home;
