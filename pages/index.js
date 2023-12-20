@@ -1,35 +1,39 @@
-function Home(){
+import { useEffect, useState } from 'react';
 
-    return <h1>Deploy automatizado !!!! Uhuuuu - 3</h1>
+function Home() {
+  const [horaAtual, setHoraAtual] = useState('');
+
+  useEffect(() => {
+    const obterDataHoraAtual = () => {
+      const data = new Date();
+      const horas = data.getHours();
+      const minutos = data.getMinutes();
+      const segundos = data.getSeconds();
+
+      const horasFormatadas = horas < 10 ? '0' + horas : horas;
+      const minutosFormatados = minutos < 10 ? '0' + minutos : minutos;
+      const segundosFormatados = segundos < 10 ? '0' + segundos : segundos;
+
+      return horasFormatadas + ':' + minutosFormatados + ':' + segundosFormatados;
+    };
+
+    const atualizarHora = () => {
+      setHoraAtual(obterDataHoraAtual());
+    };
+
+    // Atualizar a cada segundo
+    const intervalId = setInterval(atualizarHora, 1000);
+
+    // Limpar o intervalo quando o componente for desmontado
+    return () => clearInterval(intervalId);
+  }, []); // O array vazio garante que o efeito só seja executado uma vez, equivalente ao componentDidMount
+
+  return (
+    <div>
+      <h1>Deploy automatizado !!!! Uhuuuu - 3</h1>
+      <div id="dataHoraDisplay">{horaAtual}</div>
+    </div>
+  );
 }
 
-// Código comum para ambientes do servidor e do cliente
-function obterDataHoraAtual() {
-    var data = new Date();
-    var horas = data.getHours();
-    var minutos = data.getMinutes();
-
-    var segundos = data.getSeconds();
-  
-    horas = horas < 10 ? '0' + horas : horas;
-    minutos = minutos < 10 ? '0' + minutos : minutos;
-    segundos = segundos < 10 ? '0' + segundos : segundos;
-  
-    return horas + ':' + minutos + ':' + segundos;
-  }
-  
-  // Código específico para o ambiente do cliente (navegador)
-  if (typeof window !== 'undefined') {
-    // Certifique-se de que estamos no ambiente do navegador
-    window.onload = function() {
-      var elementoDisplay = document.getElementById('dataHoraDisplay');
-      if (elementoDisplay) {
-        // Atualizar a cada segundo
-        setInterval(function() {
-          elementoDisplay.textContent = obterDataHoraAtual();
-        }, 1000);
-      }
-    };
-  }  
-obterDataHoraAtual();
 export default Home;
