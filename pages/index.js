@@ -1,6 +1,6 @@
 function Home(){
 
-    return <h1>Teste Renan diff</h1>
+    return <h1>Deploy automatizado !!!! Uhuuuu</h1>
 }
 
 export default Home;
