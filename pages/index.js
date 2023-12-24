@@ -30,7 +30,7 @@ function Home() {
 
   return (
     <div>
-      <h1>Deploy automatizado !!!! Uhuuuu - 3</h1>
+      <h1>Deploy 24/12/23 - 15:54</h1>
       <div id="dataHoraDisplay">{horaAtual}</div>
     </div>
   );
